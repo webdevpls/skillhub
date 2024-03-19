@@ -6,7 +6,7 @@ import Buttons from '@/components/buttons'
 export default function Register() {
   return (
 
-    <ImageBackground source={require('@/assets/bg.png')} className='flex-1 bg-cover'>
+    <ImageBackground source={require('@/assets/bg-signup.png')} className='flex-1 bg-cover'>
 
     <View className='flex-1 flex items-center justify-center'>
       

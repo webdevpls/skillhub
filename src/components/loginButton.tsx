@@ -6,7 +6,7 @@ type HrefProps ={
     href: string
     title: string
 }
-export default function Buttons({href, title}: HrefProps) {
+export default function LoginButtons({href, title}: HrefProps) {
   return (
     <Link href={href} asChild>
     <TouchableOpacity className='bg-white rounded-md w-[350] h-14 items-center justify-center'>

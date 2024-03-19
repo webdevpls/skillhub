@@ -4,9 +4,12 @@ import Buttons from '@/components/buttons'
 
 
 export default function Welcome() {
+ 
   return (
 
-    <ImageBackground source={require('@/assets/bg.png')} className='flex-1 bg-cover'>
+    
+
+    <ImageBackground source={require('@/assets/bg-login.png')} className='flex-1 bg-cover'>
 
     <View className='flex-1 flex items-center justify-center'>
       
