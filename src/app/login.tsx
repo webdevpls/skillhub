@@ -48,12 +48,14 @@ export default function Login() {
 
     <View className='flex-row justify-between'>
     
-    <TouchableOpacity className='bg-white w-48 h-14 items-center justify-center rounded-md'>
+    <TouchableOpacity className='bg-white w-48 h-14 items-center justify-center rounded-md  flex-row gap-2'>
       <Ionicons name='logo-google' color={colors.primary} size={20} />
+      <Text className='font-medium'>Google</Text>
     </TouchableOpacity>
 
-    <TouchableOpacity className='bg-white w-48 items-center justify-center rounded-md'>
+    <TouchableOpacity className='bg-white w-48 items-center justify-center rounded-md flex-row gap-2'>
       <Ionicons name='logo-facebook' color={colors.primary} size={20} />
+      <Text className='font-medium'>Facebook</Text>
     </TouchableOpacity>
 
     </View>
