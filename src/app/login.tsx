@@ -1,5 +1,5 @@
-import { View, Text, Image, ImageBackground, Button, Pressable, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { View, Text, Image, ImageBackground, Button, Pressable, TouchableOpacity, Keyboard, TouchableWithoutFeedback } from 'react-native'
+import React, { useState } from 'react'
 import Buttons from '@/components/buttons'
 import { Input } from '@/components/input'
 
@@ -7,13 +7,40 @@ import { Ionicons } from '@expo/vector-icons'
 import { colors } from '@/styles/colors'
 import LoginButtons from '@/components/loginButton'
 import { Link } from 'expo-router'
+import SocialButton from '@/components/socialButton'
 
 
 
 export default function Login() {
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+
+ 
+
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const dismissKeyboard = () => {
+    Keyboard.dismiss();
+  };
+
+  const handleSubmit = () => {
+    // Aqui você pode fazer a lógica de envio dos dados, por exemplo, uma requisição para autenticar o usuário
+    console.log(email, password);
+  };
+
+
   return (
 
+
+
     <ImageBackground source={require('@/assets/bg.png')} className='flex-1 bg-cover'>
+
+    <TouchableWithoutFeedback onPress={dismissKeyboard}>
 
     <View className='flex-1 flex items-center justify-center'>
       
@@ -22,13 +49,15 @@ export default function Login() {
     <View className='pt-14 p-4 gap-5'>
       <Input>
         <Ionicons name='mail' size={20} color={colors.inputfont}/>
-        <Input.Field placeholder='Seuemail@gmai.com'/>
+        <Input.Field keyboardType='email-address' placeholder='Seuemail@gmai.com'  value={email} onChangeText={setEmail}/>
       </Input>
 
       <Input>
         <Ionicons name='key' size={20} color={colors.inputfont}/>
-        <Input.Field secureTextEntry placeholder='Sua senha'/>
-        <Ionicons name='eye' size={20} color={colors.inputfont}/>
+        <Input.Field secureTextEntry={!showPassword} value={password} onChangeText={setPassword} placeholder='Sua senha'/>
+        <TouchableOpacity onPress={togglePasswordVisibility}>
+        <Ionicons name={showPassword ? 'eye-off' : 'eye'} size={20} />
+      </TouchableOpacity>
       </Input>
 
       
@@ -37,26 +66,32 @@ export default function Login() {
       <Text className='text-[#7D7D7D] ml-64'>Esqueceu sua senha?</Text>
       </TouchableOpacity>
 
-    <LoginButtons
-    href='/(tabs)/home'
+  <TouchableOpacity onPress={handleSubmit}>
+    <LoginButtons  
     title='Login'
+    href=''
     />
-
+    </TouchableOpacity>
+    
         <View className='flex items-center'>
           <Text className='text-[#7D7D7D]'> Ou faça login usando</Text>
         </View>
 
-    <View className='flex-row justify-between'>
-    
-    <TouchableOpacity className='bg-white w-48 h-14 items-center justify-center rounded-md  flex-row gap-2'>
-      <Ionicons name='logo-google' color={colors.primary} size={20} />
-      <Text className='font-medium'>Google</Text>
-    </TouchableOpacity>
+    <View className='gap-4 flex-row'>
 
-    <TouchableOpacity className='bg-white w-48 items-center justify-center rounded-md flex-row gap-2'>
-      <Ionicons name='logo-facebook' color={colors.primary} size={20} />
-      <Text className='font-medium'>Facebook</Text>
-    </TouchableOpacity>
+      <SocialButton
+      href=''
+      title='Facebook'
+      iconName='logo-facebook'
+      iconColor='#3b5998'
+      />
+
+      <SocialButton
+      href=''
+      title='Google'
+      iconName='logo-google'
+      iconColor='green'
+      />
 
     </View>
 
@@ -66,6 +101,7 @@ export default function Login() {
 
 
     </View>
+    </TouchableWithoutFeedback>
     </ImageBackground>
     
   )
