@@ -1,5 +1,5 @@
 import "../global.css";
-import { Slot } from "expo-router";
+import { Slot, SplashScreen } from "expo-router";
 
 import {
   useFonts,
@@ -8,8 +8,12 @@ import {
   Poppins_700Bold
 } from '@expo-google-fonts/poppins'
 import Loading from "@/components/loading";
+import { Fragment } from "react";
+
 export default function Layout() {
   
+
+
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_500Medium,
@@ -18,8 +22,16 @@ export default function Layout() {
 
   if(!fontsLoaded){
     return <Loading/>
+    
   }
 
 
-  return <Slot />;
+  return (
+
+
+      <Slot />
+
+  )
+   
+  
 }

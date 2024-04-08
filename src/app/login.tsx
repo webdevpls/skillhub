@@ -30,7 +30,8 @@ export default function Login() {
 
   const handleSubmit = () => {
     // Aqui você pode fazer a lógica de envio dos dados, por exemplo, uma requisição para autenticar o usuário
-    console.log(email, password);
+    
+    console.log("email:", email, "senha:", password);
   };
 
 
@@ -48,15 +49,38 @@ export default function Login() {
      
     <View className='pt-14 p-4 gap-5'>
       <Input>
-        <Ionicons name='mail' size={20} color={colors.inputfont}/>
-        <Input.Field keyboardType='email-address' placeholder='Seuemail@gmai.com'  value={email} onChangeText={setEmail}/>
+       
+        <Ionicons 
+        name='mail' 
+        size={20} 
+        color={colors.inputfont}/>
+        
+        <Input.Field 
+        keyboardType='email-address' 
+        placeholder='Seuemail@gmai.com'  
+        value={email} 
+        onChangeText={setEmail}/>
+     
       </Input>
 
       <Input>
-        <Ionicons name='key' size={20} color={colors.inputfont}/>
-        <Input.Field secureTextEntry={!showPassword} value={password} onChangeText={setPassword} placeholder='Sua senha'/>
-        <TouchableOpacity onPress={togglePasswordVisibility}>
-        <Ionicons name={showPassword ? 'eye-off' : 'eye'} size={20} />
+        <Ionicons 
+        name='key' 
+        size={20} 
+        color={colors.inputfont}/>
+
+        <Input.Field 
+        secureTextEntry={!showPassword} 
+        value={password} 
+        onChangeText={setPassword} 
+        placeholder='Sua senha'/>
+
+        <TouchableOpacity 
+        onPress={togglePasswordVisibility}>
+
+        <Ionicons 
+        name={showPassword ? 'eye-off' : 'eye'} 
+        size={20} />
       </TouchableOpacity>
       </Input>
 
@@ -66,12 +90,13 @@ export default function Login() {
       <Text className='text-[#7D7D7D] ml-64'>Esqueceu sua senha?</Text>
       </TouchableOpacity>
 
-  <TouchableOpacity onPress={handleSubmit}>
+  
     <LoginButtons  
     title='Login'
-    href=''
+    href='/(tabs)/home'
+    onPress={handleSubmit}
     />
-    </TouchableOpacity>
+
     
         <View className='flex items-center'>
           <Text className='text-[#7D7D7D]'> Ou faça login usando</Text>
@@ -90,7 +115,7 @@ export default function Login() {
       href=''
       title='Google'
       iconName='logo-google'
-      iconColor='green'
+      iconColor='#040011'
       />
 
     </View>

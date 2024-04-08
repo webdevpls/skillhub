@@ -1,5 +1,9 @@
 {
   "expo": {
+    "splash": {
+      "image": "./src/assets/splash.png",
+      "resizeMode": "cover"
+    },
     "scheme": "acme",
     "userInterfaceStyle": "automatic",
     "orientation": "default",
